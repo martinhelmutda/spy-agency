@@ -8,7 +8,8 @@
                 EDITAR HIT
             </h1>
             <h2 class="subtitle">
-                Modifica lo necesario y cambia la asignación del hit
+                Modifica lo necesario y cambia la asignación del hit.
+                No se puede modificar un hit concluido
             </h2>
         </div>
     </div>
@@ -19,12 +20,12 @@
         {% csrf_token %}
 
         <!--Es editable si no es parte del grupo Hitman y no está en un estado terminal-->
-        {% if grupo != 3 and object.estado == 1 %}
+        {% if object.estado == 1 %}
             <div class="field">
                 <label class="label">{{ form.objetivo.label }}</label>
                 <div class="has-text-danger">{{ form.objetivo.errors }}</div>
                 <div class="control">
-                    {{ form.objetivo }}
+                    <input type="text" name="objetivo" value="{{ object.objetivo }}" class="input" maxlength="800" required="" id="id_objetivo" {% if grupo == 3 %} readonly {% endif %}>
                 </div>
             </div>
 
@@ -32,17 +33,18 @@
                 <label class="label">{{ form.descripcion.label }}</label>
                 <div class="has-text-danger">{{ form.descripcion.errors }}</div>
                 <div class="control">
-                    {{ form.descripcion }}
+                    <input type="text" name="descripcion" value="{{ object.descripcion }}" class="input" maxlength="800" required="" id="id_descripcion" {% if grupo == 3 %} readonly {% endif %}>
                 </div>
             </div>
 
+            {% if grupo != 3 %}
             <div class="field">
                 <label class="label">Asignación Actual</label>
                 <div class="control">
                     {{ object.asignacion }}
                 </div>
             </div>
-
+        
             <div class="field">
                 <label class="label">Cambiar asignación</label>
                 <i>Selecciona un nuevo hitman si quieres cambiar la asignación, de lo contrario déjalo vacío</i>
@@ -53,6 +55,17 @@
                     </div>
                 </div>
             </div>
+            {% endif %}
+
+            <div class="field">
+            <label class="label">{{ form.estado.label }}</label>
+            <div class="has-text-danger">{{ form.estado.errors }}</div>
+            <div class="control">
+                <div class="select">
+                    {{ form.estado }}
+                </div>
+            </div>
+        </div>
 
         {% else %}
 
@@ -71,35 +84,21 @@
             </div>
 
             <div class="field">
-                <label class="label">{{ form.asignacion.label }}</label>
+                <label class="label">Asignación</label>
                 <div class="control">
                     {{ object.asignacion }}
                 </div>
             </div>
-    
-        {% endif %}
 
-
-        <!--Si aún no está en un estado final-->
-        {% if object.estado == 1 %}
-        <div class="field">
-            <label class="label">{{ form.estado.label }}</label>
-            <div class="has-text-danger">{{ form.estado.errors }}</div>
-            <div class="control">
-                <div class="select">
-                    {{ form.estado }}
-                </div>
-            </div>
-        </div>
-        {% else %}
-        <div class="field">
-            <label class="label">{{ form.estado.label }}</label>
-            <div class="has-text-danger">{{ form.estado.errors }}</div>
+              <div class="field">
+            <label class="label">Conclusión del hit</label>
             <div class="control">
                 {{ object.get_estado_display }}
             </div>
         </div>
+    
         {% endif %}
+
 
         <div class="field">
             <label class="label">Creador del hit</label>
@@ -112,7 +111,11 @@
         <div class="field is-grouped is-grouped-right">
             <p class="control">
             <div class="buttons">
+            {% if object.estado != 1 %}
+                <a class="button is-link" href="{% url 'hit:hits_list' %}">Regresar a lista de hits</a>
+            {% else %}
                 <input class="button is-warning" type="submit" value="Actualizar datos">
+            {% endif %}
             </div>
             </p>
         </div>

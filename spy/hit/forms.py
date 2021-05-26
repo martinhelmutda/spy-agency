@@ -5,14 +5,23 @@ from user.models import User, Assignments
 
 class HitForm(forms.ModelForm):
     """
-    Author: Martin Helmut 
     Des
     """
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, user, user_group, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.user_group = user_group
         self.fields['objetivo'].required = True
+        #Boss can add hits to everyone active
+        if user_group == 1:
+            active_hitmen = User.objects.exclude(id=user.id).filter(is_active=True)
+        
+        #Manager can add hits to active lackeys and not to himself
+        elif user_group == 2:
+            lackeys_list = list(Assignments.objects.filter(manager__in = user).values_list('lacayo_id', flat=True))
+            active_hitmen = User.objects.exclude(id=user.id).filte(id__in = lackeys_list).filter(is_active=True)
 
+        self.fields['asignacion'] = forms.ModelChoiceField(queryset=active_hitmen)
     class Meta:
         model = Hit
         exclude = ['creador', 'estado']
@@ -40,11 +49,14 @@ class HitUpdateForm(forms.ModelForm):
     def __init__(self, user, user_group, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['objetivo'].required = True
-        #Boss puede asignar a todos, excepto a sí mismo y a usuarios inactivos
+        
+        self.user_group = user_group
+        active_hitmen = User.objects.none()
+        #Boss can add hits to everyone active
         if user_group == 1:
             active_hitmen = User.objects.exclude(id=user.id).filter(is_active=True)
         
-        #Manager puede asignar a sus lacayos, excepto a sí mismo y a usuarios inactivos
+        #Manager can add hits to active lackeys and not to himself
         elif user_group == 2:
             lackays_list = list(Assignments.objects.filter(manager__in = user).values_list('lacayo_id', flat=True))
             active_hitmen = User.objects.exclude(id=user.id).filte(id__in = lackays_list).filter(is_active=True)
@@ -54,7 +66,6 @@ class HitUpdateForm(forms.ModelForm):
     class Meta:
         model = Hit
         exclude = ['creador', 'asignacion']
-
         
         widgets = {
             'asignacion': forms.Select(),
@@ -71,3 +82,15 @@ class HitUpdateForm(forms.ModelForm):
             'estado':'Estado del hit',
             'creador': 'Creado por'
         }
+    
+    def clean(self):
+        #Protect data modification is HTML is modified
+        self.cleaned_data = super().clean()
+        print("Limpiando ando", self.instance.descripcion)
+        if self.instance.estado != 1:
+            self.cleaned_data['estado'] = self.instance.estado
+        if self.user_group == 3:
+            self.cleaned_data['descripcion'] = self.instance.descripcion
+            self.cleaned_data['objetivo'] = self.instance.objetivo
+        
+        return self.cleaned_data

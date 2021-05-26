@@ -39,8 +39,8 @@
           </thead>
 
           <tbody>
-            <tr>
               {% for hit in my_hits %}
+            <tr>
                   <td>{{ hit.objetivo }}</td>
                   <td>{{ hit.descripcion }}</td>
                   <td>
@@ -53,8 +53,8 @@
                   </td>
               {% empty %}
                   <td><h3>No hay hits</h3></td>
-              {% endfor %}
             </tr>
+              {% endfor %}
           </tbody>
 
         </table>
@@ -79,8 +79,8 @@
           </thead>
 
           <tbody>
-            <tr>
               {% for hit in hits %}
+            <tr>
                   <td>{{ hit.objetivo }}</td>
                   <td>{{ hit.descripcion }}</td>
                   <td>{{ hit.asignacion }}</td>
@@ -94,8 +94,8 @@
                   </td>
               {% empty %}
                   <td><h3>No hay hits</h3></td>
-              {% endfor %}
             </tr>
+              {% endfor %}
           </tbody>
 
         </table>

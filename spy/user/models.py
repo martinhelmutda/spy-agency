@@ -26,9 +26,9 @@ class Assignments(models.Model):
 
 @receiver(post_save, sender=User)
 def add_hitman_role(sender, created, instance, **kwargs):
-"""
-Se agrega el rol de hitman a los usuarios recién creados
-"""
+    """
+    Se agrega el rol de hitman a los usuarios recién creados
+    """
     if created:
         hitman_group = Group.objects.filter(id=3)
         instance.groups.set(hitman_group)
