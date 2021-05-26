@@ -126,7 +126,7 @@ class HitmanCreate(CreateView):
         return context
 
     def form_valid(self, form):
-        form.instance.creado_por = self.request.user
+        #Se crea como Hitman automaticamente
         return super(HitmanCreate, self).form_valid(form)
 
     def get_success_url(self):

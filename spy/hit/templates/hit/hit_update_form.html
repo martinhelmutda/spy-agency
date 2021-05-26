@@ -37,11 +37,19 @@
             </div>
 
             <div class="field">
-                <label class="label">{{ form.asignacion.label }}</label>
-                <div class="has-text-danger">{{ form.asignacion.errors }}</div>
+                <label class="label">Asignación Actual</label>
+                <div class="control">
+                    {{ object.asignacion }}
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Cambiar asignación</label>
+                <i>Selecciona un nuevo hitman si quieres cambiar la asignación, de lo contrario déjalo vacío</i>
+                <div class="has-text-danger">{{ form.asignacion_disponible.errors }}</div>
                 <div class="control">
                     <div class="select">
-                        {{ form.asignacion }}
+                        {{ form.asignacion_disponible }}
                     </div>
                 </div>
             </div>
