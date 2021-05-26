@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head lang="es">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="Percept">
+
+  <title>{% block title %}Instituto Pedregal{% endblock title %}</title>
+  <link rel="icon" type="image/png" href="#">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+  {% block includes %}
+  {% endblock includes %}
+</head>
+
+{% block content %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+
+<body class="layout-default">
+  <section class="hero is-fullheight is-medium is-primary is-bold">
+        <div class="hero-body">
+          <div class="container">
+            <div class="columns is-centered">
+              <article class="card is-rounded">
+                <div class="card-content">
+                  <h1 class="title has-text-dark">
+                    Spy Agency
+                  </h1>
+                  <form method="post" action="" novalidate>
+                  {% csrf_token %}
+                  
+
+                    <div class="field">
+                      <label class="label">{{ form.username.label_tag }}</label>
+                      <div>{{ form.username.help_text}}</div>
+                      <div class="control">
+                        {{ form.username }}
+                      </div>
+                      <div class="has-text-danger">{{ form.username.errors }}</div>
+                    </div>
+
+                    <div class="field">
+                      <label class="label">{{ form.password1.label_tag }}</label>
+                      <div>{{ form.password1.help_text}}</div>
+                      <div class="control">
+                        {{ form.password1 }}
+                      </div>
+                      <div class="has-text-danger">{{ form.password1.errors }}</div>
+                    </div>
+
+                    <div class="field">
+                      <label class="label">{{ form.password2.label_tag }}</label>
+                      <div>{{ form.password2.help_text}}</div>
+                      <div class="control">
+                        {{ form.password2 }}
+                      </div>
+                      <div class="has-text-danger">{{ form.password2.errors }}</div>
+                    </div>
+
+                    <div class="field">
+                      <label class="label">{{ form.email.label_tag }}</label>
+                      <div>{{ form.email.help_text}}</div>
+                      <div class="control">
+                        {{ form.email }}
+                      </div>
+                      <div class="has-text-danger">{{ form.email.errors }}</div>
+                    </div>
+
+                    <div class="field">
+                      <button class="button is-primary is-medium is-fullwidth" type="submit" value="login">
+                        Registrarse
+                      </button>
+                    </div>
+
+                    <p class="has-text-danger">
+                    {% if form.errors %}
+                        {% for error in form.non_field_errors %}
+                            <div class="has-text-danger">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    </p>
+                  <input type="hidden" name="next" value="{{ next }}">
+                  </form>
+                </div>
+              </article>
+            </div>
+          </div>
+    </div>
+  </section>
+</body>
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero is-primary">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Lista de Hits
+      </h1>
+      <h2 class="subtitle">
+        Muestra los hits disponibles
+      </h2>
+      {% if grupo == 1 or grupo == 2 %}
+      <a class="button is-outlined" id="" href="{% url 'hit:hit_create' %}">
+        <span class="icon is-small">
+          <i class="fas fa-plus"></i>
+        </span>
+        <span><b>Nuevo hit</b></span>
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+ <hr>
+<div class="container base ">
+
+{% if grupo != 1 %}
+  <div class="columns is-centered">
+     <div class="box">
+    <h2 class="title">Mis Hits Asignados</h2>
+      <div class="table-container">
+        <table class="table is-fullwidth">
+          <thead>
+            <tr>
+              <th>Hit</th>
+              <th>Descripción</th>
+              <th>Ver detalle</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              {% for hit in my_hits %}
+                  <td>{{ hit.objetivo }}</td>
+                  <td>{{ hit.descripcion }}</td>
+                  <td>
+                    <a class="button is-info" href="">
+                      <span class="icon">
+                        <i class="fas fa-eye"></i>
+                      </span>
+                      <span>Ver detalle</span>
+                    </a>
+                  </td>
+              {% empty %}
+                  <td><h3>No hay hits</h3></td>
+              {% endfor %}
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+  </div>
+{% endif %}
+<br>
+{% if grupo != 3 %}
+  <div class="columns is-centered">
+    <div class="box">
+    <h2 class="title">Hits</h2>
+      <div class="table-container">
+        <table class="table is-fullwidth">
+          <thead>
+            <tr>
+              <th>Hit</th>
+              <th>Descripción</th>
+              <th>Asignación</th>
+              <th>Ver detalle</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              {% for hit in hits %}
+                  <td>{{ hit.objetivo }}</td>
+                  <td>{{ hit.descripcion }}</td>
+                  <td>{{ hit.asignacion }}</td>
+                  <td>
+                    <a class="button is-info" href="">
+                      <span class="icon">
+                        <i class="fas fa-eye"></i>
+                      </span>
+                      <span>Ver detalle</span>
+                    </a>
+                  </td>
+              {% empty %}
+                  <td><h3>No hay hits</h3></td>
+              {% endfor %}
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+
+    </div>
+  </div>
+{% endif %}
+</div>
+
+
+
+{% endblock %}
