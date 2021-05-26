@@ -13,7 +13,7 @@
         </div>
     </div>
 </section>
-
+<hr>
 <div class="container base">
     <form class="" method="post" novalidate>
         {% csrf_token %}
@@ -44,27 +44,6 @@
                 </div>
             </div>
         </div>
-        
-        <div class="field">
-            <label class="label">{{ form.estado.label }}</label>
-            <div class="has-text-danger">{{ form.estado.errors }}</div>
-            <div class="control">
-                <div class="select">
-                    {{ form.estado }}
-                </div>
-            </div>
-        </div>
-
-        <div class="field">
-            <label class="label">{{ form.creador.label }}</label>
-            <div class="has-text-danger">{{ form.creador.errors }}</div>
-            <div class="control">
-                <div class="select">
-                    {{ form.creador }}
-                </div>
-            </div>
-        </div>
-
 
         <hr>
         <div class="field is-grouped is-grouped-right">

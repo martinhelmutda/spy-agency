@@ -4,7 +4,7 @@ from django.views.generic.edit import CreateView, FormView, UpdateView
 from django.views.generic.list import ListView
 from .models import Hit
 from user.models import Assignments 
-from .forms import HitForm
+from .forms import HitForm, HitUpdateForm
 from django.urls import reverse
 
 # Create your views here.
@@ -37,7 +37,21 @@ class HitsList(ListView):
 
 
 class HitDetailUpdate(UpdateView):
-    pass
+    model = Hit
+    form_class = HitUpdateForm
+    template_name_suffix = '_update_form'
+
+    def get_context_data(self, **kwargs):
+        context = super(HitDetailUpdate, self).get_context_data(**kwargs)
+        # context['niveles'] = Hit.objects.all()
+        return context
+
+    def form_valid(self, form):
+        form.save()
+        return super(HitDetailUpdate, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse('hit:hit_list')
 
 class HitCreate(CreateView):
     """

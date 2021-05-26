@@ -15,7 +15,8 @@ class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
 
-
+    def __str__(self):
+        return self.username
 
 class Assignments(models.Model):
     manager = models.ForeignKey(User, verbose_name='manager_de', related_name="manager_de", on_delete=models.CASCADE) 

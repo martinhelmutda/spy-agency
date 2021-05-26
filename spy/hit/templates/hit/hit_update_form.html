@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero is-primary">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                EDITAR HIT
+            </h1>
+            <h2 class="subtitle">
+                Modifica lo necesario y cambia la asignación del hit
+            </h2>
+        </div>
+    </div>
+</section>
+<hr>
+<div class="container base">
+    <form class="" method="post" novalidate>
+        {% csrf_token %}
+
+        <!--Es editable si no es parte del grupo Hitman y no está en un estado terminal-->
+        {% if grupo != 3 and object.estado == 1 %}
+            <div class="field">
+                <label class="label">{{ form.objetivo.label }}</label>
+                <div class="has-text-danger">{{ form.objetivo.errors }}</div>
+                <div class="control">
+                    {{ form.objetivo }}
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">{{ form.descripcion.label }}</label>
+                <div class="has-text-danger">{{ form.descripcion.errors }}</div>
+                <div class="control">
+                    {{ form.descripcion }}
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">{{ form.asignacion.label }}</label>
+                <div class="has-text-danger">{{ form.asignacion.errors }}</div>
+                <div class="control">
+                    <div class="select">
+                        {{ form.asignacion }}
+                    </div>
+                </div>
+            </div>
+
+        {% else %}
+
+            <div class="field">
+                <label class="label">{{ form.objetivo.label }}</label>
+                <div class="control">
+                    {{ object.objetivo }}
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">{{ form.descripcion.label }}</label>
+                <div class="control">
+                    {{ object.descripcion }}
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">{{ form.asignacion.label }}</label>
+                <div class="control">
+                    {{ object.asignacion }}
+                </div>
+            </div>
+    
+        {% endif %}
+
+
+        <!--Si aún no está en un estado final-->
+        {% if object.estado == 1 %}
+        <div class="field">
+            <label class="label">{{ form.estado.label }}</label>
+            <div class="has-text-danger">{{ form.estado.errors }}</div>
+            <div class="control">
+                <div class="select">
+                    {{ form.estado }}
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="field">
+            <label class="label">{{ form.estado.label }}</label>
+            <div class="has-text-danger">{{ form.estado.errors }}</div>
+            <div class="control">
+                {{ object.get_estado_display }}
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="field">
+            <label class="label">Creador del hit</label>
+            <div class="control">
+                {{ object.creador }}
+            </div>
+        </div>
+
+        <hr>
+        <div class="field is-grouped is-grouped-right">
+            <p class="control">
+            <div class="buttons">
+                <input class="button is-warning" type="submit" value="Actualizar datos">
+            </div>
+            </p>
+        </div>
+    </form>
+</div>
+{% endblock %}
