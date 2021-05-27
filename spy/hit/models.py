@@ -1,8 +1,6 @@
 from django.db import models
 from user.models import User
 
-# Create your models here.
-
 HIT_STATUS = ((1,'Asignado'),(2,'Fallido'), (3,'Completado'))
 
 class Hit(models.Model):

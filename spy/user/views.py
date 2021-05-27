@@ -20,9 +20,8 @@ from django.contrib.auth.forms import AuthenticationForm
 
 class LoginView(FormView):
     """
-    Author: Martin Helmut 
+    Authentication Form + extra
     """
-
     form_class = AuthenticationForm
     redirect_field_name = REDIRECT_FIELD_NAME
     template_name = 'user/login.html'
@@ -100,7 +99,7 @@ class LoginView(FormView):
 
 class LogoutView(RedirectView):
     """
-    Authors: Martin Helmut 
+    Logout and redirect to login
     """
     url = '/'
 
@@ -110,6 +109,9 @@ class LogoutView(RedirectView):
 
 
 class HitmenList(PermissionRequiredMixin, ListView):
+    """
+    List of all the hitmen assigned to a user. User can be active or not.
+    """
     permission_required = ('user.view_user')
     model = User
 
@@ -133,6 +135,10 @@ class HitmenList(PermissionRequiredMixin, ListView):
         return context
 
 class HitmenDetailUpdate(PermissionRequiredMixin,SuccessMessageMixin, UpdateView):
+    """
+    Update active users and make assignments manager -> hitman
+    Deactivate users
+    """
     permission_required = ('user.change_user')
     model = User
     form_class = UserUpdateForm
@@ -158,7 +164,6 @@ class HitmenDetailUpdate(PermissionRequiredMixin,SuccessMessageMixin, UpdateView
         return kwargs
 
     def form_valid(self, form):
-        #Make the new assignment with the restrictions given
         return super(HitmenDetailUpdate, self).form_valid(form)
 
     def get_success_url(self):
@@ -167,8 +172,7 @@ class HitmenDetailUpdate(PermissionRequiredMixin,SuccessMessageMixin, UpdateView
 
 class HitmanCreate(CreateView):
     """
-    Authors: Martin Helmut
-    Create new hitmam.
+    View for anybody that wants to create a new user 
     """
     model = User
     form_class = RegistrationForm
@@ -178,7 +182,6 @@ class HitmanCreate(CreateView):
         return context
 
     def form_valid(self, form):
-        #Se crea como Hitman automaticamente
         return super(HitmanCreate, self).form_valid(form)
 
     def get_success_url(self):

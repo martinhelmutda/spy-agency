@@ -8,10 +8,8 @@ from .models import User
 
 class RegistrationForm(UserCreationForm):
     """
-    Author: Martin Helmut 
-    Des
+    Signup form
     """
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['email'].required = True
@@ -28,10 +26,8 @@ class RegistrationForm(UserCreationForm):
         }
 class UserUpdateForm(forms.ModelForm):
     """
-    Author: Martin Helmut 
-    Des
+    Form to See detail and update user 
     """
-
     def __init__(self, user, user_group, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['lacayos'].queryset = User.objects.exclude(id=user.id).filter(is_active=True)

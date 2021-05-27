@@ -2,9 +2,11 @@
 FROM python:3
 ENV PYTHONUNBUFFERED=1
 WORKDIR /code
-COPY requirements.txt /code/
+
+ADD . /code/
 RUN pip install --upgrade pip && \
     pip install pip-tools && \
-    pip-compile -q /code/spy/requirements/requirements.in --output-file /code/spy/requirements.txt && \
-    pip install --no-cache-dir -r /code/spy/requirements.txt
+    ls -R && \
+    pip-compile -q ./requirements/requirements.in --output-file ./requirements.txt && \
+    pip install --no-cache-dir -r ./requirements.txt
 COPY . /code/

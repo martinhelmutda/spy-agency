@@ -279,13 +279,12 @@
         }
     },
     
-    
     {
         "model": "user.user",
         "pk": 1,
         "fields": {
             "password": "pbkdf2_sha256$260000$KLRp2F95zpler7Z7wiY9Za$2YeVLkvzXZ+bJty7SQGvf9Sz4I7t/9SX5km7SCKA3QA=",
-            "last_login": "2021-05-26T21:12:09Z",
+            "last_login": "2021-05-27T17:16:46.474Z",
             "is_superuser": true,
             "username": "Boss",
             "first_name": "",
@@ -295,15 +294,18 @@
             "date_joined": "2021-05-26T20:40:22Z",
             "email": "giuseppi@spy.com",
             "descripcion": null,
-            "groups": [1],
+            "groups": [
+                1
+            ],
             "user_permissions": []
         }
-    }, {
+    },
+    {
         "model": "user.user",
         "pk": 2,
         "fields": {
             "password": "pbkdf2_sha256$260000$f3dJtLzGa8S1ISc5O5zSh0$vZ+DpDU0ROygcOCDxCBOQwkJieQ/vTClZYcfozO/5TE=",
-            "last_login": null,
+            "last_login": "2021-05-27T17:18:10.452Z",
             "is_superuser": false,
             "username": "Manager-1",
             "first_name": "",
@@ -312,16 +314,19 @@
             "is_active": true,
             "date_joined": "2021-05-26T21:00:16.176Z",
             "email": "manager1@spy.com",
-            "descripcion": null,
-            "groups": [2],
+            "descripcion": "Manager listo para la acción",
+            "groups": [
+                2
+            ],
             "user_permissions": []
         }
-    }, {
+    },
+    {
         "model": "user.user",
         "pk": 3,
         "fields": {
             "password": "pbkdf2_sha256$260000$IUxspfOtq5n49hQOGn7gXM$htJJGVmt/Ofb0z6+T1M+VCIShVNNYqR1JSctB9qVxRg=",
-            "last_login": null,
+            "last_login": "2021-05-27T17:12:31.591Z",
             "is_superuser": false,
             "username": "Manager-2",
             "first_name": "",
@@ -331,10 +336,13 @@
             "date_joined": "2021-05-26T21:03:59.477Z",
             "email": "manager2@spy.com",
             "descripcion": null,
-            "groups": [2],
+            "groups": [
+                2
+            ],
             "user_permissions": []
         }
-    }, {
+    },
+    {
         "model": "user.user",
         "pk": 4,
         "fields": {
@@ -349,15 +357,18 @@
             "date_joined": "2021-05-26T21:05:04Z",
             "email": "manager3@spy.com",
             "descripcion": null,
-            "groups": [2],
+            "groups": [
+                2
+            ],
             "user_permissions": []
         }
-    }, {
+    },
+    {
         "model": "user.user",
         "pk": 5,
         "fields": {
             "password": "pbkdf2_sha256$260000$r4BVcaacRumi5sbsfTLRjt$XBblgkH7urt35DB3WqJ6U3+991ui2F7px6ioyBCt78A=",
-            "last_login": null,
+            "last_login": "2021-05-27T17:19:12.852Z",
             "is_superuser": false,
             "username": "Hitman-1",
             "first_name": "",
@@ -367,15 +378,18 @@
             "date_joined": "2021-05-26T21:07:08.020Z",
             "email": "hitman1@spy.com",
             "descripcion": null,
-            "groups": [3],
+            "groups": [
+                3
+            ],
             "user_permissions": []
         }
-    }, {
+    },
+    {
         "model": "user.user",
         "pk": 6,
         "fields": {
             "password": "pbkdf2_sha256$260000$b5iEQNrTzVsgNdcQt0SIyy$sRYgv3AGVy/2OQczdai/XKOT/deaIle0byU4H892ysY=",
-            "last_login": null,
+            "last_login": "2021-05-27T06:24:38.934Z",
             "is_superuser": false,
             "username": "Hitman-2",
             "first_name": "",
@@ -384,11 +398,14 @@
             "is_active": true,
             "date_joined": "2021-05-26T21:09:19.871Z",
             "email": "hitman2@spy.com",
-            "descripcion": null,
-            "groups": [3],
+            "descripcion": "Es el 2",
+            "groups": [
+                3
+            ],
             "user_permissions": []
         }
-    }, {
+    },
+    {
         "model": "user.user",
         "pk": 7,
         "fields": {
@@ -399,14 +416,17 @@
             "first_name": "",
             "last_name": "",
             "is_staff": false,
-            "is_active": true,
+            "is_active": false,
             "date_joined": "2021-05-26T21:09:46.391Z",
             "email": "hitman3@spy.com",
-            "descripcion": null,
-            "groups": [3],
+            "descripcion": "Desapareció",
+            "groups": [
+                3
+            ],
             "user_permissions": []
         }
-    }, {
+    },
+    {
         "model": "user.user",
         "pk": 8,
         "fields": {
@@ -420,11 +440,14 @@
             "is_active": true,
             "date_joined": "2021-05-26T21:10:10.288Z",
             "email": "hitman4@spy.com",
-            "descripcion": null,
-            "groups": [3],
+            "descripcion": "Este es bueno",
+            "groups": [
+                3
+            ],
             "user_permissions": []
         }
-    }, {
+    },
+    {
         "model": "user.user",
         "pk": 9,
         "fields": {
@@ -439,10 +462,13 @@
             "date_joined": "2021-05-26T21:10:27.190Z",
             "email": "hitman5@spy.com",
             "descripcion": null,
-            "groups": [3],
+            "groups": [
+                3
+            ],
             "user_permissions": []
         }
-    }, {
+    },
+    {
         "model": "user.user",
         "pk": 10,
         "fields": {
@@ -453,14 +479,17 @@
             "first_name": "",
             "last_name": "",
             "is_staff": false,
-            "is_active": true,
+            "is_active": false,
             "date_joined": "2021-05-26T21:10:47.590Z",
             "email": "hitman6@spy.com",
-            "descripcion": null,
-            "groups": [3],
+            "descripcion": "Lo aplastó un piano",
+            "groups": [
+                3
+            ],
             "user_permissions": []
         }
-    }, {
+    },
+    {
         "model": "user.user",
         "pk": 11,
         "fields": {
@@ -474,16 +503,19 @@
             "is_active": true,
             "date_joined": "2021-05-26T21:11:10.069Z",
             "email": "hitman7@spy.com",
-            "descripcion": null,
-            "groups": [3],
+            "descripcion": "El número 7",
+            "groups": [
+                3
+            ],
             "user_permissions": []
         }
-    }, {
+    },
+    {
         "model": "user.user",
         "pk": 12,
         "fields": {
             "password": "pbkdf2_sha256$260000$RjX77VEPn7STNxo3T2XnyN$5RLsq8RCEZmdX3tzzDjWRxreFOV445ayHz26fssykwU=",
-            "last_login": null,
+            "last_login": "2021-05-26T21:31:51.041Z",
             "is_superuser": false,
             "username": "Hitman-8",
             "first_name": "",
@@ -493,10 +525,13 @@
             "date_joined": "2021-05-26T21:11:32.325Z",
             "email": "hitman8@spy.com",
             "descripcion": null,
-            "groups": [3],
+            "groups": [
+                3
+            ],
             "user_permissions": []
         }
-    }, {
+    },
+    {
         "model": "user.user",
         "pk": 13,
         "fields": {
@@ -510,9 +545,104 @@
             "is_active": false,
             "date_joined": "2021-05-26T21:11:53.094Z",
             "email": "hitman9@spy.com",
-            "descripcion": null,
-            "groups": [3],
+            "descripcion": "Se retiró",
+            "groups": [
+                3
+            ],
             "user_permissions": []
+        }
+    },
+    {
+        "model": "user.assignments",
+        "pk": 1,
+        "fields": {
+            "manager": 3,
+            "lacayo": 11,
+            "fecha": "2021-05-27"
+        }
+    },
+    {
+        "model": "user.assignments",
+        "pk": 2,
+        "fields": {
+            "manager": 3,
+            "lacayo": 12,
+            "fecha": "2021-05-27"
+        }
+    },
+    {
+        "model": "user.assignments",
+        "pk": 3,
+        "fields": {
+            "manager": 3,
+            "lacayo": 6,
+            "fecha": "2021-05-27"
+        }
+    },
+    {
+        "model": "user.assignments",
+        "pk": 4,
+        "fields": {
+            "manager": 2,
+            "lacayo": 5,
+            "fecha": "2021-05-27"
+        }
+    },
+
+    
+    {
+        "model": "hit.hit",
+        "pk": 1,
+        "fields": {
+            "asignacion": 5,
+            "objetivo": "Correcaminos",
+            "descripcion": "Atrapar al correcaminos del desierto de Arizona",
+            "estado": 1,
+            "creador": 1
+        }
+    },
+    {
+        "model": "hit.hit",
+        "pk": 2,
+        "fields": {
+            "asignacion": 6,
+            "objetivo": "Speedy González",
+            "descripcion": "Atrapar al ratón más veloz de México",
+            "estado": 3,
+            "creador": 1
+        }
+    },
+    {
+        "model": "hit.hit",
+        "pk": 3,
+        "fields": {
+            "asignacion": 5,
+            "objetivo": "Jerry",
+            "descripcion": "Aydar a Tom a capturar a su principal enemigo",
+            "estado": 1,
+            "creador": 3
+        }
+    },
+    {
+        "model": "hit.hit",
+        "pk": 4,
+        "fields": {
+            "asignacion": 2,
+            "objetivo": "Silvestre",
+            "descripcion": "Evitar que Silvestre se coma a Piolín, antes de que sea muy tarde",
+            "estado": 1,
+            "creador": 3
+        }
+    },
+    {
+        "model": "hit.hit",
+        "pk": 5,
+        "fields": {
+            "asignacion": 6,
+            "objetivo": "Sam Bigotes",
+            "descripcion": "Evitar que Sam Bigotes le haga daño a Bugs Bunny, durante la cena del martes",
+            "estado": 1,
+            "creador": 1
         }
     }
 ]

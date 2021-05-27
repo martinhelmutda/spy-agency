@@ -11,6 +11,7 @@ class User(AbstractUser):
     descripcion = models.CharField(max_length=1800, null=True, blank=True)
     lacayos = models.ManyToManyField("self",through='Assignments', through_fields=('manager', 'lacayo'), symmetrical=False)
 
+    #field required in login 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
 
@@ -27,7 +28,7 @@ class Assignments(models.Model):
 @receiver(post_save, sender=User)
 def add_hitman_role(sender, created, instance, **kwargs):
     """
-    Se agrega el rol de hitman a los usuarios recién creados
+    Hitman role is added after a user is created 
     """
     if created:
         hitman_group = Group.objects.filter(id=3)

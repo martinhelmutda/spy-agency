@@ -59,12 +59,8 @@
                   <td>
                   {% if user.descripcion %}
                     {{ user.descripcion }}
-                  {% else %}
-
                   {% endif %}
-                  
                   </td>
-                  {% comment %} <td>{{ user.lacayos.first }}</td> {% endcomment %}
                   
                   <td>
                     {% for answer in user.lacayos.all %}

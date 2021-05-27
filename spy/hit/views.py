@@ -11,6 +11,9 @@ from django.urls import reverse
 
 
 class HitsList(PermissionRequiredMixin, ListView):
+    """
+    List of hits 
+    """
     permission_required = ('hit.view_hit')
     model = Hit
     def get_context_data(self, **kwargs):
@@ -40,6 +43,9 @@ class HitsList(PermissionRequiredMixin, ListView):
 
 
 class HitDetailUpdate(PermissionRequiredMixin,SuccessMessageMixin, UpdateView):
+    """
+    Update, see and assign a hit to lackeys
+    """
     permission_required = ('hit.change_hit')
     model = Hit
     form_class = HitUpdateForm
@@ -73,6 +79,10 @@ class HitDetailUpdate(PermissionRequiredMixin,SuccessMessageMixin, UpdateView):
         return reverse('hit:hits_list')
 
 class HitCreate(PermissionRequiredMixin, SuccessMessageMixin, CreateView):
+    """
+    Create a new hit and make an assignment to lackeys
+    Creator is assigned automatically
+    """
     permission_required = ('hit.add_hit')
     model = Hit
     form_class = HitForm
@@ -103,6 +113,9 @@ class HitCreate(PermissionRequiredMixin, SuccessMessageMixin, CreateView):
         return reverse('hit:hits_list')
 
 class HitBulkEdit(PermissionRequiredMixin, SuccessMessageMixin, FormView):
+    """
+    Assign multiple hit to a hitman
+    """
     permission_required = ('hit.add_hit')
     model = Hit
     form_class = HitBuilkForm

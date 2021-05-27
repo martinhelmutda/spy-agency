@@ -5,9 +5,8 @@ from user.models import User, Assignments
 
 class HitForm(forms.ModelForm):
     """
-    Des
+    Form to create hit and filter lackeys
     """
-
     def __init__(self, user, user_group, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.user_group = user_group
@@ -42,10 +41,8 @@ class HitForm(forms.ModelForm):
 
 class HitUpdateForm(forms.ModelForm):
     """
-    Author: Martin Helmut 
-    Des
+    Form to update hit and filter lackeys
     """
-
     def __init__(self, user, user_group, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['objetivo'].required = True
@@ -63,6 +60,7 @@ class HitUpdateForm(forms.ModelForm):
 
         self.fields['asignacion_disponible'] = forms.ModelChoiceField(queryset=active_hitmen)
         self.fields['asignacion_disponible'].required = False
+    
     class Meta:
         model = Hit
         exclude = ['creador', 'asignacion']
@@ -84,9 +82,8 @@ class HitUpdateForm(forms.ModelForm):
         }
     
     def clean(self):
-        #Protect data modification is HTML is modified
+        #Protect data if HTML is modified
         self.cleaned_data = super().clean()
-        print("Limpiando ando", self.instance.descripcion)
         if self.instance.estado != 1:
             self.cleaned_data['estado'] = self.instance.estado
         if self.user_group == 3:
@@ -98,13 +95,10 @@ class HitUpdateForm(forms.ModelForm):
 
 class HitBuilkForm(forms.ModelForm):
     """
-    Author: Martin Helmut 
-    Des
+    Showw all available hits and lackeys assigned to user
     """
-
     def __init__(self, user, user_group, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        print("US", user, user_group)
         self.user_group = user_group
         active_hitmen = User.objects.none()
 

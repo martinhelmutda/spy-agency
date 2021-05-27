@@ -1,0 +1,57 @@
+[
+    {
+        "model": "hit.hit",
+        "pk": 1,
+        "fields": {
+            "asignacion": 5,
+            "objetivo": "Correcaminos",
+            "descripcion": "Atrapar al correcaminos del desierto de Arizona",
+            "estado": 1,
+            "creador": 1
+        }
+    },
+    {
+        "model": "hit.hit",
+        "pk": 2,
+        "fields": {
+            "asignacion": 6,
+            "objetivo": "Speedy González",
+            "descripcion": "Atrapar al ratón más veloz de México",
+            "estado": 3,
+            "creador": 1
+        }
+    },
+    {
+        "model": "hit.hit",
+        "pk": 3,
+        "fields": {
+            "asignacion": 5,
+            "objetivo": "Jerry",
+            "descripcion": "Aydar a Tom a capturar a su principal enemigo",
+            "estado": 1,
+            "creador": 3
+        }
+    },
+    {
+        "model": "hit.hit",
+        "pk": 4,
+        "fields": {
+            "asignacion": 2,
+            "objetivo": "Silvestre",
+            "descripcion": "Evitar que Silvestre se coma a Piolín, antes de que sea muy tarde",
+            "estado": 1,
+            "creador": 3
+        }
+    },
+    {
+        "model": "hit.hit",
+        "pk": 5,
+        "fields": {
+            "asignacion": 6,
+            "objetivo": "Sam Bigotes",
+            "descripcion": "Evitar que Sam Bigotes le haga daño a Bugs Bunny, durante la cena del martes",
+            "estado": 1,
+            "creador": 1
+        }
+    }
+]
