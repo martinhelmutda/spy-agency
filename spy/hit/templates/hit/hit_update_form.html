@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero is-primary">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                EDITAR HIT
+            </h1>
+            <h2 class="subtitle">
+                Modifica lo necesario y cambia la asignación del hit.
+                No se puede modificar un hit concluido
+            </h2>
+        </div>
+    </div>
+</section>
+<hr>
+<div class="container base">
+    <form class="" method="post" novalidate>
+        {% csrf_token %}
+
+        <!--Es editable si no es parte del grupo Hitman y no está en un estado terminal-->
+        {% if object.estado == 1 %}
+            <div class="field">
+                <label class="label">{{ form.objetivo.label }}</label>
+                <div class="has-text-danger">{{ form.objetivo.errors }}</div>
+                {% if grupo == 3 %} <i>No editable para Hitmen</i> {% endif %}
+                <div class="control">
+                    <input type="text" name="objetivo" value="{{ object.objetivo }}" class="input" maxlength="800" required="" id="id_objetivo" {% if grupo == 3 %} readonly {% endif %}>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">{{ form.descripcion.label }}</label>
+                <div class="has-text-danger">{{ form.descripcion.errors }}</div>
+                {% if grupo == 3 %} <i>No editable para Hitmen</i> {% endif %}
+                <div class="control">
+                    <input type="text" name="descripcion" value="{{ object.descripcion }}" class="input" maxlength="800" required="" id="id_descripcion" {% if grupo == 3 %} readonly {% endif %}>
+                </div>
+            </div>
+
+            {% if grupo != 3 %}
+            <div class="field">
+                <label class="label">Asignación Actual</label>
+                <div class="control">
+                    {{ object.asignacion }}
+                </div>
+            </div>
+        
+            <div class="field">
+                <label class="label">Cambiar asignación</label>
+                <i>Selecciona un nuevo hitman si quieres cambiar la asignación, de lo contrario déjalo vacío</i>
+                <div class="has-text-danger">{{ form.asignacion_disponible.errors }}</div>
+                <div class="control">
+                    <div class="select">
+                        {{ form.asignacion_disponible }}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="field">
+            <label class="label">{{ form.estado.label }}</label>
+            <div class="has-text-danger">{{ form.estado.errors }}</div>
+            <div class="control">
+                <div class="select">
+                    {{ form.estado }}
+                </div>
+            </div>
+        </div>
+
+        {% else %}
+
+            <div class="field">
+                <label class="label">{{ form.objetivo.label }}</label>
+                <div class="control">
+                    {{ object.objetivo }}
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">{{ form.descripcion.label }}</label>
+                <div class="control">
+                    {{ object.descripcion }}
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Asignación</label>
+                <div class="control">
+                    {{ object.asignacion }}
+                </div>
+            </div>
+
+              <div class="field">
+            <label class="label">Conclusión del hit</label>
+            <div class="control">
+                {{ object.get_estado_display }}
+            </div>
+        </div>
+    
+        {% endif %}
+
+
+        <div class="field">
+            <label class="label">Creador del hit</label>
+            <div class="control">
+                {{ object.creador }}
+            </div>
+        </div>
+
+        <hr>
+        <div class="field is-grouped is-grouped-right">
+            <p class="control">
+            <div class="buttons">
+            {% if object.estado != 1 %}
+                <a class="button is-link" href="{% url 'hit:hits_list' %}">Regresar a lista de hits</a>
+            {% else %}
+                <input class="button is-warning" type="submit" value="Actualizar datos">
+            {% endif %}
+            </div>
+            </p>
+        </div>
+    </form>
+</div>
+{% endblock %}
