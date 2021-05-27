@@ -1,0 +1,518 @@
+[
+    {
+        "model": "auth.permission",
+        "pk": 1,
+        "fields": {
+            "name": "Can add log entry",
+            "content_type": 1,
+            "codename": "add_logentry"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 2,
+        "fields": {
+            "name": "Can change log entry",
+            "content_type": 1,
+            "codename": "change_logentry"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 3,
+        "fields": {
+            "name": "Can delete log entry",
+            "content_type": 1,
+            "codename": "delete_logentry"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 4,
+        "fields": {
+            "name": "Can view log entry",
+            "content_type": 1,
+            "codename": "view_logentry"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 5,
+        "fields": {
+            "name": "Can add permission",
+            "content_type": 2,
+            "codename": "add_permission"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 6,
+        "fields": {
+            "name": "Can change permission",
+            "content_type": 2,
+            "codename": "change_permission"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 7,
+        "fields": {
+            "name": "Can delete permission",
+            "content_type": 2,
+            "codename": "delete_permission"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 8,
+        "fields": {
+            "name": "Can view permission",
+            "content_type": 2,
+            "codename": "view_permission"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 9,
+        "fields": {
+            "name": "Can add group",
+            "content_type": 3,
+            "codename": "add_group"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 10,
+        "fields": {
+            "name": "Can change group",
+            "content_type": 3,
+            "codename": "change_group"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 11,
+        "fields": {
+            "name": "Can delete group",
+            "content_type": 3,
+            "codename": "delete_group"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 12,
+        "fields": {
+            "name": "Can view group",
+            "content_type": 3,
+            "codename": "view_group"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 13,
+        "fields": {
+            "name": "Can add content type",
+            "content_type": 4,
+            "codename": "add_contenttype"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 14,
+        "fields": {
+            "name": "Can change content type",
+            "content_type": 4,
+            "codename": "change_contenttype"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 15,
+        "fields": {
+            "name": "Can delete content type",
+            "content_type": 4,
+            "codename": "delete_contenttype"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 16,
+        "fields": {
+            "name": "Can view content type",
+            "content_type": 4,
+            "codename": "view_contenttype"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 17,
+        "fields": {
+            "name": "Can add session",
+            "content_type": 5,
+            "codename": "add_session"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 18,
+        "fields": {
+            "name": "Can change session",
+            "content_type": 5,
+            "codename": "change_session"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 19,
+        "fields": {
+            "name": "Can delete session",
+            "content_type": 5,
+            "codename": "delete_session"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 20,
+        "fields": {
+            "name": "Can view session",
+            "content_type": 5,
+            "codename": "view_session"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 21,
+        "fields": {
+            "name": "Can add user",
+            "content_type": 6,
+            "codename": "add_user"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 22,
+        "fields": {
+            "name": "Can change user",
+            "content_type": 6,
+            "codename": "change_user"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 23,
+        "fields": {
+            "name": "Can delete user",
+            "content_type": 6,
+            "codename": "delete_user"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 24,
+        "fields": {
+            "name": "Can view user",
+            "content_type": 6,
+            "codename": "view_user"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 25,
+        "fields": {
+            "name": "Can add assignments",
+            "content_type": 7,
+            "codename": "add_assignments"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 26,
+        "fields": {
+            "name": "Can change assignments",
+            "content_type": 7,
+            "codename": "change_assignments"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 27,
+        "fields": {
+            "name": "Can delete assignments",
+            "content_type": 7,
+            "codename": "delete_assignments"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 28,
+        "fields": {
+            "name": "Can view assignments",
+            "content_type": 7,
+            "codename": "view_assignments"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 29,
+        "fields": {
+            "name": "Can add hit",
+            "content_type": 8,
+            "codename": "add_hit"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 30,
+        "fields": {
+            "name": "Can change hit",
+            "content_type": 8,
+            "codename": "change_hit"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 31,
+        "fields": {
+            "name": "Can delete hit",
+            "content_type": 8,
+            "codename": "delete_hit"
+        }
+    }, {
+        "model": "auth.permission",
+        "pk": 32,
+        "fields": {
+            "name": "Can view hit",
+            "content_type": 8,
+            "codename": "view_hit"
+        }
+    }, {
+        "model": "auth.group",
+        "pk": 1,
+        "fields": {
+            "name": "Boss",
+            "permissions": [1, 2, 3, 4, 9, 10, 11, 12, 5, 6, 7, 8, 13, 14, 15, 16, 29, 30, 31, 32, 17, 18, 19, 20, 25, 26, 27, 28, 21, 22, 23, 24]
+        }
+    }, {
+        "model": "auth.group",
+        "pk": 2,
+        "fields": {
+            "name": "Manager",
+            "permissions": [29, 30, 32, 25, 26, 28, 22, 24]
+        }
+    },
+    {
+        "model": "auth.group",
+        "pk": 3,
+        "fields": {
+            "name": "Hitman",
+            "permissions": [30, 32]
+        }
+    },
+    
+    
+    {
+        "model": "user.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$260000$KLRp2F95zpler7Z7wiY9Za$2YeVLkvzXZ+bJty7SQGvf9Sz4I7t/9SX5km7SCKA3QA=",
+            "last_login": "2021-05-26T21:12:09Z",
+            "is_superuser": true,
+            "username": "Boss",
+            "first_name": "",
+            "last_name": "",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2021-05-26T20:40:22Z",
+            "email": "giuseppi@spy.com",
+            "descripcion": null,
+            "groups": [1],
+            "user_permissions": []
+        }
+    }, {
+        "model": "user.user",
+        "pk": 2,
+        "fields": {
+            "password": "pbkdf2_sha256$260000$f3dJtLzGa8S1ISc5O5zSh0$vZ+DpDU0ROygcOCDxCBOQwkJieQ/vTClZYcfozO/5TE=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Manager-1",
+            "first_name": "",
+            "last_name": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2021-05-26T21:00:16.176Z",
+            "email": "manager1@spy.com",
+            "descripcion": null,
+            "groups": [2],
+            "user_permissions": []
+        }
+    }, {
+        "model": "user.user",
+        "pk": 3,
+        "fields": {
+            "password": "pbkdf2_sha256$260000$IUxspfOtq5n49hQOGn7gXM$htJJGVmt/Ofb0z6+T1M+VCIShVNNYqR1JSctB9qVxRg=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Manager-2",
+            "first_name": "",
+            "last_name": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2021-05-26T21:03:59.477Z",
+            "email": "manager2@spy.com",
+            "descripcion": null,
+            "groups": [2],
+            "user_permissions": []
+        }
+    }, {
+        "model": "user.user",
+        "pk": 4,
+        "fields": {
+            "password": "pbkdf2_sha256$260000$aguElSnApsIQ8XoOW8cii2$ljBVccDOI3sd2KaPyQoK3rN8pHEkjkh+8bjJsnGGcKQ=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Manager-3",
+            "first_name": "",
+            "last_name": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2021-05-26T21:05:04Z",
+            "email": "manager3@spy.com",
+            "descripcion": null,
+            "groups": [2],
+            "user_permissions": []
+        }
+    }, {
+        "model": "user.user",
+        "pk": 5,
+        "fields": {
+            "password": "pbkdf2_sha256$260000$r4BVcaacRumi5sbsfTLRjt$XBblgkH7urt35DB3WqJ6U3+991ui2F7px6ioyBCt78A=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Hitman-1",
+            "first_name": "",
+            "last_name": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2021-05-26T21:07:08.020Z",
+            "email": "hitman1@spy.com",
+            "descripcion": null,
+            "groups": [3],
+            "user_permissions": []
+        }
+    }, {
+        "model": "user.user",
+        "pk": 6,
+        "fields": {
+            "password": "pbkdf2_sha256$260000$b5iEQNrTzVsgNdcQt0SIyy$sRYgv3AGVy/2OQczdai/XKOT/deaIle0byU4H892ysY=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Hitman-2",
+            "first_name": "",
+            "last_name": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2021-05-26T21:09:19.871Z",
+            "email": "hitman2@spy.com",
+            "descripcion": null,
+            "groups": [3],
+            "user_permissions": []
+        }
+    }, {
+        "model": "user.user",
+        "pk": 7,
+        "fields": {
+            "password": "pbkdf2_sha256$260000$kwolk96wb4RVGGJ2xjiDxO$hFci2YF6hK20nRj/rcILIiVTI4kwZX7GHFXkiUV3FqU=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Hitman-3",
+            "first_name": "",
+            "last_name": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2021-05-26T21:09:46.391Z",
+            "email": "hitman3@spy.com",
+            "descripcion": null,
+            "groups": [3],
+            "user_permissions": []
+        }
+    }, {
+        "model": "user.user",
+        "pk": 8,
+        "fields": {
+            "password": "pbkdf2_sha256$260000$BzXe5ROQKGqlw3P6BLcd4H$mclrQLrkHuaLrh/yr8LO4NNtd7o9+3WfaipxWM9UxdI=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Hitman-4",
+            "first_name": "",
+            "last_name": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2021-05-26T21:10:10.288Z",
+            "email": "hitman4@spy.com",
+            "descripcion": null,
+            "groups": [3],
+            "user_permissions": []
+        }
+    }, {
+        "model": "user.user",
+        "pk": 9,
+        "fields": {
+            "password": "pbkdf2_sha256$260000$k7cpdGW0Ww8K1WAJM5ATQv$mK2uwjb1CzKXohbWZETjuLspXCL+eJ7RCHfTx35DG2k=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Hitman-5",
+            "first_name": "",
+            "last_name": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2021-05-26T21:10:27.190Z",
+            "email": "hitman5@spy.com",
+            "descripcion": null,
+            "groups": [3],
+            "user_permissions": []
+        }
+    }, {
+        "model": "user.user",
+        "pk": 10,
+        "fields": {
+            "password": "pbkdf2_sha256$260000$uncl5Vln901GntnwaaE1cF$HswigAvHapr6k5KWRW7m8wm4EiYiTil+MDtlGOitB9k=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Hitman-6",
+            "first_name": "",
+            "last_name": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2021-05-26T21:10:47.590Z",
+            "email": "hitman6@spy.com",
+            "descripcion": null,
+            "groups": [3],
+            "user_permissions": []
+        }
+    }, {
+        "model": "user.user",
+        "pk": 11,
+        "fields": {
+            "password": "pbkdf2_sha256$260000$YKz3PciEwxOixzOWlRKOio$4Goh6C7/75JlRQyR0Zd2/e00eV9RPyyWvAz685TcMrM=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Hitman-7",
+            "first_name": "",
+            "last_name": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2021-05-26T21:11:10.069Z",
+            "email": "hitman7@spy.com",
+            "descripcion": null,
+            "groups": [3],
+            "user_permissions": []
+        }
+    }, {
+        "model": "user.user",
+        "pk": 12,
+        "fields": {
+            "password": "pbkdf2_sha256$260000$RjX77VEPn7STNxo3T2XnyN$5RLsq8RCEZmdX3tzzDjWRxreFOV445ayHz26fssykwU=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Hitman-8",
+            "first_name": "",
+            "last_name": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2021-05-26T21:11:32.325Z",
+            "email": "hitman8@spy.com",
+            "descripcion": null,
+            "groups": [3],
+            "user_permissions": []
+        }
+    }, {
+        "model": "user.user",
+        "pk": 13,
+        "fields": {
+            "password": "pbkdf2_sha256$260000$4rbQNUS5a1Y8mz9mqzKq4W$0H5CyLjydnhPTqwvN5nJIaSjwkTrArJJferMDHRpPTQ=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Hitman-9",
+            "first_name": "",
+            "last_name": "",
+            "is_staff": false,
+            "is_active": false,
+            "date_joined": "2021-05-26T21:11:53.094Z",
+            "email": "hitman9@spy.com",
+            "descripcion": null,
+            "groups": [3],
+            "user_permissions": []
+        }
+    }
+]
