@@ -11,18 +11,36 @@
         Muestra los hits disponibles
       </h2>
       {% if grupo == 1 or grupo == 2 %}
+      <div class="buttons">
       <a class="button is-outlined" id="" href="{% url 'hit:hit_create' %}">
         <span class="icon is-small">
           <i class="fas fa-plus"></i>
         </span>
         <span><b>Nuevo hit</b></span>
       </a>
+
+      <a class="button is-outlined" id="" href="{% url 'hit:hit_bulk_edit' %}">
+        <span class="icon is-small">
+          <i class="fas fa-boxes"></i>
+        </span>
+        <span><b>Asignación Masiva</b></span>
+      </a>
+      
+      </div>
       {% endif %}
     </div>
   </div>
 </section>
  <hr>
 <div class="container base ">
+ {% if messages %}
+      {% for message in messages %}
+      <div class="notification is-success">
+        <button class="delete"></button>
+        {{ message }} 
+      </div>
+      {% endfor %}
+{% endif %}
 
 {% if grupo != 1 %}
   <div class="columns is-centered">
@@ -34,6 +52,7 @@
             <tr>
               <th>Hit</th>
               <th>Descripción</th>
+              <th>Estado</th>
               <th>Ver detalle</th>
             </tr>
           </thead>
@@ -43,6 +62,7 @@
             <tr>
                   <td>{{ hit.objetivo }}</td>
                   <td>{{ hit.descripcion }}</td>
+                  <td>{{ hit.get_estado_display }}</td>
                   <td>
                     <a class="button is-info" href="{% url 'hit:hit_detail' hit.id%}">
                       <span class="icon">
@@ -66,7 +86,7 @@
 {% if grupo != 3 %}
   <div class="columns is-centered">
     <div class="box">
-    <h2 class="title">Hits</h2>
+    <h2 class="title">Hits de Lacayos</h2>
       <div class="table-container">
         <table class="table is-fullwidth">
           <thead>
@@ -74,6 +94,7 @@
               <th>Hit</th>
               <th>Descripción</th>
               <th>Asignación</th>
+              <th>Estado</th>
               <th>Ver detalle</th>
             </tr>
           </thead>
@@ -84,6 +105,7 @@
                   <td>{{ hit.objetivo }}</td>
                   <td>{{ hit.descripcion }}</td>
                   <td>{{ hit.asignacion }}</td>
+                  <td>{{ hit.get_estado_display }}</td>
                   <td>
                     <a class="button is-info" href="{% url 'hit:hit_detail' hit.id%}">
                       <span class="icon">

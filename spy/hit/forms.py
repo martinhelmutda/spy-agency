@@ -18,8 +18,8 @@ class HitForm(forms.ModelForm):
         
         #Manager can add hits to active lackeys and not to himself
         elif user_group == 2:
-            lackeys_list = list(Assignments.objects.filter(manager__in = user).values_list('lacayo_id', flat=True))
-            active_hitmen = User.objects.exclude(id=user.id).filte(id__in = lackeys_list).filter(is_active=True)
+            lackeys_list = list(Assignments.objects.filter(manager__in = [user]).values_list('lacayo_id', flat=True))
+            active_hitmen = User.objects.exclude(id=user.id).filter(id__in = lackeys_list).filter(is_active=True)
 
         self.fields['asignacion'] = forms.ModelChoiceField(queryset=active_hitmen)
     class Meta:
@@ -58,8 +58,8 @@ class HitUpdateForm(forms.ModelForm):
         
         #Manager can add hits to active lackeys and not to himself
         elif user_group == 2:
-            lackays_list = list(Assignments.objects.filter(manager__in = user).values_list('lacayo_id', flat=True))
-            active_hitmen = User.objects.exclude(id=user.id).filte(id__in = lackays_list).filter(is_active=True)
+            lackays_list = list(Assignments.objects.filter(manager__in = [user]).values_list('lacayo_id', flat=True))
+            active_hitmen = User.objects.exclude(id=user.id).filter(id__in = lackays_list).filter(is_active=True)
 
         self.fields['asignacion_disponible'] = forms.ModelChoiceField(queryset=active_hitmen)
         self.fields['asignacion_disponible'].required = False
@@ -94,3 +94,36 @@ class HitUpdateForm(forms.ModelForm):
             self.cleaned_data['objetivo'] = self.instance.objetivo
         
         return self.cleaned_data
+
+
+class HitBuilkForm(forms.ModelForm):
+    """
+    Author: Martin Helmut 
+    Des
+    """
+
+    def __init__(self, user, user_group, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        print("US", user, user_group)
+        self.user_group = user_group
+        active_hitmen = User.objects.none()
+
+        #Boss can add hits to everyone active
+        if user_group == 1:
+            active_hitmen = User.objects.exclude(id=user.id).filter(is_active=True)
+        
+        #Manager can add hits to active lackeys and not to himself
+        elif user_group == 2:
+            lackays_list = list(Assignments.objects.filter(manager__in = [user]).values_list('lacayo_id', flat=True))
+            active_hitmen = User.objects.exclude(id=user.id).filter(id__in = lackays_list).filter(is_active=True)
+
+        self.fields['asignacion_disponible'] = forms.ModelChoiceField(queryset=active_hitmen)
+        self.fields['asignacion_disponible'].required = False
+
+        hits_available = Hit.objects.filter(estado=1)
+        self.fields['hits'] = forms.ModelMultipleChoiceField(queryset=hits_available)
+        self.fields['hits'].required = True
+    class Meta:
+        model = Hit
+        fields = []
+    

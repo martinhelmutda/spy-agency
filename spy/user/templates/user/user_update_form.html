@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero is-primary">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                EDITAR USUARIO
+            </h1>
+            <h2 class="subtitle">
+                Modificar la información de usuario
+            </h2>
+        </div>
+    </div>
+</section>
+<hr>
+
+<div class="container base">
+    <form class="" method="post" novalidate>
+        {% csrf_token %}
+
+        <!--Es editable si no está inactivo-->
+        {% if object.is_active %}
+            <div class="field">
+                <label class="label">{{ form.username.label }}</label>
+                <div class="has-text-danger">{{ form.username.errors }}</div>
+                <div class="control">
+                    {{ form.username }}
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">{{ form.email.label }}</label>
+                <div class="has-text-danger">{{ form.email.errors }}</div>
+                <div class="control">
+                    {{ form.email }}
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">{{ form.descripcion.label }}</label>
+                <div class="has-text-danger">{{ form.descripcion.errors }}</div>
+                <div class="control">
+                    {{ form.descripcion }}
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">{{ form.is_active.label }}</label>
+                <div class="has-text-danger">{{ form.is_active.errors }}</div>
+                <div class="control">
+                    {{ form.is_active }}
+                </div>
+            </div>
+
+        {% if grupo == 1 and object.groups.first.id == 2 %}
+            <div class="field">
+                <label class="label">{{ form.lacayos.label }}</label>
+                <div class="control">
+                    <div class="select is-multiple">
+                        {{ form.lacayos }}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+</div>
+
+{% else %}
+
+<div class="field">
+    <label class="label">{{ form.username.label }}</label>
+    <div class="control">
+        {{ object.username }}
+    </div>
+</div>
+
+<div class="field">
+    <label class="label">{{ form.email.label }}</label>
+    <div class="control">
+        {{ object.email }}
+    </div>
+</div>
+
+<div class="field">
+    <label class="label">{{ form.descripcion.label }}</label>
+    <div class="control">
+        {{ object.descripcion }}
+    </div>
+</div>
+
+<div class="field">
+    <label class="label">{{ form.is_active.label }}</label>
+    <div class="control">
+        {{ object.is_active }}
+    </div>
+</div>
+
+{% if grupo == 1 and object.groups.first.id == 2 %}
+<div class="field">
+    <label class="label">{{ form.lacayos.label }}</label>
+    <div class="control">
+        <div class="select is-multiple">
+            {{ form.lacayos }}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endif %}
+
+<hr>
+<div class="field is-grouped is-grouped-right">
+    <p class="control">
+        <div class="buttons">
+            {% if object.is_active %}
+            <input class="button is-warning" type="submit" value="Actualizar datos">
+            {% else %}
+            <a class="button is-link" href="{% url 'user:hitmen_list' %}">Regresar a lista de usuarios</a>
+            {% endif %}
+        </div>
+    </p>
+</div>
+</form>
+</div>
+{% endblock %}

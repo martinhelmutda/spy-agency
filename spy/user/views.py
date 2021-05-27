@@ -1,3 +1,4 @@
+from django.contrib.auth.models import Group
 from django.shortcuts import render
 from django.views.generic import FormView, RedirectView, UpdateView, CreateView
 from django.views.generic.list import ListView
@@ -8,9 +9,10 @@ from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.cache import never_cache
 from urllib.parse import urlparse
 from django.urls import reverse
-
-from .models import User
-from .forms import RegistrationForm
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
+from .models import User, Assignments
+from .forms import RegistrationForm, UserUpdateForm
 from django.contrib.auth.forms import AuthenticationForm
 
 
@@ -107,16 +109,66 @@ class LogoutView(RedirectView):
         return super(LogoutView, self).get(request, *args, **kwargs)
 
 
-class HitmenList(ListView):
-    pass
+class HitmenList(PermissionRequiredMixin, ListView):
+    permission_required = ('user.view_user')
+    model = User
 
-class HitmenDetailUpdate(UpdateView):
-    pass
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        current_user = self.request.user
+        grupo = Group.objects.get(user=current_user).id
+        context['grupo']= grupo
+
+        #boss can see all the users in system
+        if grupo == 1:
+            hitmen =  User.objects.all()
+
+        #manager can see his lackeys
+        else:
+            #Lackeys of the current user
+            lackeys = list(Assignments.objects.filter(manager_id__in = [current_user.id]).values_list('lacayo_id', flat=True))
+            hitmen =  User.objects.exclude(id=current_user.id).filter(id__in=lackeys)
+
+        context['hitmen'] = hitmen
+        return context
+
+class HitmenDetailUpdate(PermissionRequiredMixin,SuccessMessageMixin, UpdateView):
+    permission_required = ('user.change_user')
+    model = User
+    form_class = UserUpdateForm
+    template_name_suffix = '_update_form'
+    success_message = "%(username)s se actualizó exitosamente"
+
+    def get_context_data(self, **kwargs):
+        context = super(HitmenDetailUpdate, self).get_context_data(**kwargs)
+        current_user = self.request.user
+        grupo = Group.objects.get(user=current_user).id
+        context['grupo'] = grupo
+        return context
+
+    def get_form_kwargs(self):
+        """
+        Send kwargs needded to make the queryset to know available hitmen
+        """
+        kwargs = super(HitmenDetailUpdate, self).get_form_kwargs()
+        user = self.request.user
+        user_group = Group.objects.get(user=user).id
+        if hasattr(self, 'object'):
+            kwargs.update({'user': user, 'user_group':user_group})
+        return kwargs
+
+    def form_valid(self, form):
+        #Make the new assignment with the restrictions given
+        return super(HitmenDetailUpdate, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse('user:hitmen_list')
+
 
 class HitmanCreate(CreateView):
     """
     Authors: Martin Helmut
-    Create new hitma.
+    Create new hitmam.
     """
     model = User
     form_class = RegistrationForm

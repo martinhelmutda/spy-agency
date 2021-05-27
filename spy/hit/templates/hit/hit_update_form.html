@@ -24,6 +24,7 @@
             <div class="field">
                 <label class="label">{{ form.objetivo.label }}</label>
                 <div class="has-text-danger">{{ form.objetivo.errors }}</div>
+                {% if grupo == 3 %} <i>No editable para Hitmen</i> {% endif %}
                 <div class="control">
                     <input type="text" name="objetivo" value="{{ object.objetivo }}" class="input" maxlength="800" required="" id="id_objetivo" {% if grupo == 3 %} readonly {% endif %}>
                 </div>
@@ -32,6 +33,7 @@
             <div class="field">
                 <label class="label">{{ form.descripcion.label }}</label>
                 <div class="has-text-danger">{{ form.descripcion.errors }}</div>
+                {% if grupo == 3 %} <i>No editable para Hitmen</i> {% endif %}
                 <div class="control">
                     <input type="text" name="descripcion" value="{{ object.descripcion }}" class="input" maxlength="800" required="" id="id_descripcion" {% if grupo == 3 %} readonly {% endif %}>
                 </div>

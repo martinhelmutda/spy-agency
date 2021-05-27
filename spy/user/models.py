@@ -9,7 +9,7 @@ from django.dispatch import receiver
 class User(AbstractUser):
     email = models.EmailField('email address', unique=True)
     descripcion = models.CharField(max_length=1800, null=True, blank=True)
-    lacayos = models.ManyToManyField("self",through='Assignments', symmetrical=True)
+    lacayos = models.ManyToManyField("self",through='Assignments', through_fields=('manager', 'lacayo'), symmetrical=False)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']

@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero is-primary">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Hitmen
+      </h1>
+      <h2 class="subtitle">
+        Usuarios asignados a tu perfil
+      </h2>
+    </div>
+  </div>
+</section>
+ <hr>
+<div class="container base ">
+
+   {% if messages %}
+      {% for message in messages %}
+      <div class="notification is-success">
+        <button class="delete"></button>
+        {{ message }} 
+      </div>
+      {% endfor %}
+{% endif %}
+
+  <div class="columns is-centered">
+
+     <div class="box">
+    <h2 class="title">Manager</h2>
+      <div class="table-container">
+        <table class="table is-fullwidth">
+          <thead>
+            <tr>
+              <th>Nombre Clave</th>
+              <th>Estado</th>
+              <th>Rol</th>
+              <th>Descripción</th>
+              <th>Lacayos</th>
+              <th>Ver Detalles</th>
+            </tr>
+          </thead>
+
+          <tbody>
+              {% for user in hitmen %}
+            <tr>
+                  <td>{{ user.username }}</td>
+                  <td>
+                  {% if user.is_active %}
+                    Activo
+                  {% else %}
+                    Inactivo
+                  {% endif %}
+
+                  </td>
+                  <td>{{ user.groups.first }}</td>
+              
+                  <td>
+                  {% if user.descripcion %}
+                    {{ user.descripcion }}
+                  {% else %}
+
+                  {% endif %}
+                  
+                  </td>
+                  {% comment %} <td>{{ user.lacayos.first }}</td> {% endcomment %}
+                  
+                  <td>
+                    {% for answer in user.lacayos.all %}
+                      <p>{{ answer }}</p>
+                    {% endfor %}
+                  </td>
+
+                  <td>
+                    <a class="button is-info" href="{% url 'user:hitmen_detail' user.id%}">
+                      <span class="icon">
+                        <i class="fas fa-eye"></i>
+                      </span>
+                      <span>Ver detalle</span>
+                    </a>
+                  </td>
+              {% empty %}
+                  <td><h3>No hay hits</h3></td>
+            </tr>
+              {% endfor %}
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+  </div>
+
+<br>
+</div>
+
+
+
+{% endblock %}
